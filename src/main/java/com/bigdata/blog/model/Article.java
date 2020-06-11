@@ -13,11 +13,40 @@ public class Article {
     private String title;
     private String lable;
     private String summary;
+
+    @Lob
+    @Basic(fetch = FetchType.LAZY)
+    @Column(columnDefinition = "text")
     private String content;
+
     private long time;
     private int type;
 
-    private int userId;
+    private int authorId;
+
+    private int browseCount;
+    private int reviewCount;
+    private int supportCount;
+    private int collectCount;
+
+    public Article() {
+    }
+
+    public Article(String title, String lable, String summary, String content, int type, int authorId) {
+        this.title = title;
+        this.lable = lable;
+        this.summary = summary;
+        this.content = content;
+        this.type = type;
+        this.authorId = authorId;
+    }
+
+    public void reSetCount(){
+        this.browseCount = 0;
+        this.reviewCount = 0;
+        this.supportCount = 0;
+        this.collectCount = 0;
+    }
 
     public int getId() {
         return id;
@@ -55,14 +84,6 @@ public class Article {
         this.content = content;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
     public int getType() {
         return type;
     }
@@ -78,4 +99,54 @@ public class Article {
     public void setTime(long time) {
         this.time = time;
     }
+
+    public int getAuthorId() {
+        return authorId;
+    }
+
+    public void setAuthorId(int authorId) {
+        this.authorId = authorId;
+    }
+
+    public int getBrowseCount() {
+        return browseCount;
+    }
+
+    public void setBrowseCount(int browseCount) {
+        this.browseCount = browseCount;
+    }
+
+    public int getReviewCount() {
+        return reviewCount;
+    }
+
+    public void setReviewCount(int reviewCount) {
+        this.reviewCount = reviewCount;
+    }
+
+    public int getSupportCount() {
+        return supportCount;
+    }
+
+    public void setSupportCount(int supportCount) {
+        this.supportCount = supportCount;
+    }
+
+    public int getCollectCount() {
+        return collectCount;
+    }
+
+    public void setCollectCount(int collectCount) {
+        this.collectCount = collectCount;
+    }
+
+    public void addBrowse(){ this.browseCount +=1; }
+
+    public void addSupport(){ this.supportCount +=1; }
+
+    public void addReview(){ this.reviewCount +=1; }
+
+    public void addCollection(){ this.collectCount +=1; }
+
+
 }

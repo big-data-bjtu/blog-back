@@ -1,0 +1,18 @@
+spring:
+  jpa:
+    show-sql: false
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5Dialect
+  datasource:
+#    url: jdbc:mysql://localhost:3306/blog?serverTimezone=Hongkong
+    url: jdbc:mysql://172.31.43.7:3306/blog?characterEncoding=utf-8
+    username: root
+    password: 123456
+
+
+
+server:
+  port: 8080
